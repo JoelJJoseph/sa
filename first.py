@@ -49,7 +49,7 @@ st.image(image)
 
 user_input = st.text_input("Type exit to exit the interaction with the bot.")
 
-webrtc_ctx = webrtc.StreamlitWebRTC()
+webrtc_ctx = webrtc()
 
 if st.button("Start Voice Interaction"):
     if user_input.lower() == 'exit':
@@ -60,7 +60,7 @@ if st.button("Start Voice Interaction"):
             webrtc_ctx.audio_only()
             audio_data = webrtc_ctx.audio_receiver.get_frame()
 
-            with sr.AudioData(audio_data, webrtc_ctx.audio_receiver.sample_rate, 2):
+            with sr.AudioData(audio_data):
                 user_input = r.recognize_google(audio_data)
                 st.text(f"You (Voice): {user_input}")
 
