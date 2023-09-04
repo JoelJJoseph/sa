@@ -53,32 +53,24 @@ def app():
     
     # Define the WebRTC app behavior
     def webrtc_app():
-        if st.button("Start Voice Interaction"):
-            if user_input.lower() == 'exit':
-                st.text("Bot: Goodbye!")
+        st.text("You (Speak):")
+        audio_data = webrtc_ctx.audio_receiver.get_frame()
+
+        with sr.AudioData(audio_data):
+            user_input = r.recognize_google(audio_data)
+            st.text(f"You (Voice): {user_input}")
+
+            matched_intent = recognize_intent(user_input)
+            if matched_intent:
+                response = get_response(matched_intent)
+                st.text(f"Bot: {response}")
+                output_audio_file = text_to_audio(response)
+                st.audio(output_audio_file, format='audio/mp3')
             else:
-                try:
-                    st.text("You (Speak):")
-                    audio_data = webrtc_ctx.audio_receiver.get_frame()
-    
-                    with sr.AudioData(audio_data):
-                        user_input = r.recognize_google(audio_data)
-                        st.text(f"You (Voice): {user_input}")
-    
-                        matched_intent = recognize_intent(user_input)
-                        if matched_intent:
-                            response = get_response(matched_intent)
-                            st.text(f"Bot: {response}")
-                            output_audio_file = text_to_audio(response)
-                            st.audio(output_audio_file, format='audio/mp3')
-                        else:
-                            st.text("Bot: I'm sorry, I didn't understand that. Please ask another question.")
-    
-                except sr.UnknownValueError:
-                    st.text("Bot: I couldn't understand your audio. Please try again.")
-                except sr.RequestError as e:
-                    st.text(f"Bot: There was an error with the speech recognition service: {e}")
-    
-    # Display the Streamlit app
-    if __name__ == "__main__":
-        webrtc(webrtc_app)
+                st.text("Bot: I'm sorry, I didn't understand that. Please ask another question.")
+
+    # Display the Streamlit app with WebRTC streaming
+    webrtc_ctx = webrtc(webrtc_app)
+
+if __name__ == "__main__":
+    app()
