@@ -1,7 +1,7 @@
 import json
 import random
 import streamlit as st
-import streamlit_webrtc as webrtc
+from streamlit_webrtc import webrtc_streamer as webrtc
 import speech_recognition as sr
 from gtts import gTTS
 import os
