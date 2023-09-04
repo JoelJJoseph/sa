@@ -9,8 +9,6 @@ from PIL import Image
 
 def app():
         
-    # Initialize pygame
-    
 
     # Specify the absolute path to the intent.json file
     intent_file_path = './firstaid/intent.json'  # Replace with the actual path
