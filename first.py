@@ -46,7 +46,7 @@ def app():
     # Streamlit UI
     st.title("Voice Assistant Chatbot")
     
-    image_path = "images/first.jpg"
+    image_path = "./images/first.jpg"
     image = Image.open(image_path)
     st.image(image)
 
