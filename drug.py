@@ -9,6 +9,7 @@ import streamlit as st
 from PIL import Image
 import nltk
 nltk.download('stopwords')
+nltk.download('wordnet')
 
 def app():
         
