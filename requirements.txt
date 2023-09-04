@@ -1,3 +1,4 @@
+nltk
 streamlit
 tensorflow
 pillow
@@ -8,4 +9,4 @@ numpy
 scikit-learn-intelex
 xgboost
 scikit-image
-nltk
+
