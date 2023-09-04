@@ -10,7 +10,7 @@ from PIL import Image
 def app():
         
     # Initialize pygame
-    pygame.mixer.init()
+    pygame.mixer.init(44100, -16, 2, 4096, devicename="dummy")
 
     # Specify the absolute path to the intent.json file
     intent_file_path = './firstaid/intent.json'  # Replace with the actual path
