@@ -11,4 +11,6 @@ xgboost
 scikit-image
 BeautifulSoup4
 SpeechRecognition
+gTTS
+pygame
 
