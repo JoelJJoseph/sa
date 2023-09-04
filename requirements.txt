@@ -13,4 +13,6 @@ BeautifulSoup4
 SpeechRecognition
 gTTS
 pygame
-
+libasound2
+alsa-lib
+alsamixer
