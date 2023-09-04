@@ -26,7 +26,7 @@ def app():
 
 
     # Display the image
-    image_path = "images/brain chemistry-cuate.png"
+    image_path = "./images/brain chemistry-cuate.png"
     image = Image.open(image_path)
     resized_image = image.resize((800, 800))
     st.image(resized_image)
@@ -105,7 +105,7 @@ def app():
 
 
     # Display the image
-    image_path = "images/teamself.png"
+    image_path = "./images/teamself.png"
     image = Image.open(image_path)
 
     st.image(image)
