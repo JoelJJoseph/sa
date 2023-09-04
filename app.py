@@ -17,8 +17,5 @@ st.markdown(new_title, unsafe_allow_html=True)
 app.add_app("⚕️MediCare", home.app)
 app.add_app("💊Drug Recommendation",drug.app)
 app.add_app("🚑First aid", first.app)
-#app.add_app("Hairloss", hair.app)
-#app.add_app("Nail Fungus", nail.app)
-#app.add_app("Skin cancer", cancer.app)
-# The main app
+
 app.run()
