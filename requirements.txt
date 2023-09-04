@@ -14,3 +14,4 @@ SpeechRecognition
 gTTS
 pygame
 streamlit-webrtc==0.6.0
+streamlit==1.0.0
