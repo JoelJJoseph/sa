@@ -7,13 +7,11 @@ import streamlit as st
 import pygame
 from PIL import Image
 
-# Set the SDL_AUDIODRIVER environment variable to 'alsa' before importing Pygame
-os.environ['SDL_AUDIODRIVER'] = 'alsa'
-
-# Initialize pygame
-pygame.mixer.init()
-
 def app():
+        
+    # Initialize pygame
+    pygame.mixer.init()
+
     # Specify the absolute path to the intent.json file
     intent_file_path = './firstaid/intent.json'  # Replace with the actual path
 
@@ -42,21 +40,17 @@ def app():
         os.makedirs(output_path, exist_ok=True)
         output_file = os.path.join(output_path, 'output.mp3')
         tts.save(output_file)
-
-        # Stop any ongoing audio playback
-        pygame.mixer.music.stop()
-
         pygame.mixer.music.load(output_file)  # Load the correct file path
         pygame.mixer.music.play()
 
     # Streamlit UI
     st.title("Voice Assistant Chatbot")
-
-    image_path = "./images/first.jpg"
+    
+    image_path = "images/first.jpg"
     image = Image.open(image_path)
     st.image(image)
 
-    user_input = st.text_input("Type 'exit' to exit the interaction with the bot:")
+    user_input = st.text_input("Type exit to exit with the interaction with the bot.")
 
     if st.button("Enter Voice"):
         if user_input.lower() == 'exit':
@@ -83,6 +77,3 @@ def app():
                 st.text("Bot: I couldn't understand your audio. Please try again.")
             except sr.RequestError as e:
                 st.text(f"Bot: There was an error with the speech recognition service: {e}")
-
-if __name__ == '__main__':
-    app()
