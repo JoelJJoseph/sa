@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <title>Medical Condition Predictor and Drug Recommendation System</title>
+        <style>
+            .highlight { background-color: #FFFF00 }
+            div { font-size: 20px; }
+        </style>
+        <script src="/scripts/snippet-javascript-console.min.js?v=1"></script>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+        <style>
+            .form-actions {
+                margin: 0;
+                background-color: transparent;
+                text-align: center;
+            }
+            .form-control,.font-weight-bold{
+                font-family: 'Montserrat', sans-serif;
+            }
+            .btn-color{
+                font-family: 'Montserrat', sans-serif;
+                background-color: #00ABE1;
+            }
+
+            html {
+                scroll-behavior: smooth;
+                font-family: 'Montserrat', sans-serif;
+            }
+
+            .navbar-custom {
+                background-color: #00ABE1;
+            }
+            
+            .navbar-custom .navbar-brand,
+            .navbar-custom .navbar-text {
+                color: #ffffff;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: bold;
+            }
+            
+            .navbar-custom .navbar-nav .nav-link {
+                color: #ffffff;
+            }
+            </style>
+
+            <style> 
+
+            .card-header{
+                font-family: 'Montserrat', sans-serif;
+                font-size: bold;
+            }
+
+            .card-header-text{
+                color: #ffffff;
+            }
+
+            .card-body, .card-text{
+                font-family: 'Montserrat', sans-serif;
+            }
+
+            p.round1 {
+            
+                border-radius: 8px;
+                width: auto;
+                padding:3px;
+                margin: 3px;
+                font-family: 'Montserrat', sans-serif;
+                text-align:center;
+                color:white;
+                background:#00ABE1;
+            }
+
+            table, th{
+                padding: 5px;
+                font-family: 'Montserrat', sans-serif;
+                font-size:20px;
+                text-align: center;
+                font-weight:normal;
+                
+            }
+        </style>
+        <script src="https://kit.fontawesome.com/a658a7b479.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-custom">
+            <a class="navbar-brand" href="/">Medical Condition Predictor & Drug Recommendation System</a>
+        </nav>
+
+        <br><br><br>
+
+        <form class="container" method="POST" action="/result" enctype = "multipart/form-data">
+            <div class="form-group">
+                <label for="exampleFormControlInput1" class="font-weight-bold">Enter Medical issue for Getting Drug Recommendation : </label>
+                <textarea rows="5" cols="5" required="true" name="rawtext" class="form-control"></textarea> 
+            </div>
+            <br><br>
+        
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-lg font-weight-bold btn-color" type="submit" >Predict</button>
+            </div>
+            <br><br>
+        </form>
+
+    {% block content %}
+        {% endblock %}
+    <br><br>
+
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js " integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n " crossorigin="anonymous "></script>
+    </body>
+</html>
