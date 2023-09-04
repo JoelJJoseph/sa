@@ -57,7 +57,6 @@ def webrtc_app():
         else:
             try:
                 st.text("You (Speak):")
-                webrtc_ctx.audio_only()
                 audio_data = webrtc_ctx.audio_receiver.get_frame()
 
                 with sr.AudioData(audio_data):
@@ -69,7 +68,7 @@ def webrtc_app():
                         response = get_response(matched_intent)
                         st.text(f"Bot: {response}")
                         output_audio_file = text_to_audio(response)
-                        webrtc_ctx.audio_file(output_audio_file)
+                        st.audio(output_audio_file, format='audio/mp3')
                     else:
                         st.text("Bot: I'm sorry, I didn't understand that. Please ask another question.")
 
@@ -78,5 +77,6 @@ def webrtc_app():
             except sr.RequestError as e:
                 st.text(f"Bot: There was an error with the speech recognition service: {e}")
 
-# Start the WebRTC app
-webrtc(webrtc_app)
+# Display the Streamlit app
+if __name__ == "__main__":
+    webrtc(webrtc_app)
