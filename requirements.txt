@@ -13,4 +13,4 @@ BeautifulSoup4
 SpeechRecognition
 gTTS
 pygame
-
+pyaudio
