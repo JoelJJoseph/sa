@@ -10,9 +10,9 @@ from PIL import Image
 
 def app():
         
-    tokenizer_path = 'medicine/model/count_vectorizer.pkl'
-    model_path = 'medicine/model/pass_agg_model.pkl'
-    data_path = 'medicine/data/drugsComTrain_raw.csv'
+    tokenizer_path = './medicine/model/count_vectorizer.pkl'
+    model_path = './medicine/model/pass_agg_model.pkl'
+    data_path = './medicine/data/drugsComTrain_raw.csv'
 
     vectorizer = joblib.load(tokenizer_path)
     model = joblib.load(model_path)
