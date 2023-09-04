@@ -7,8 +7,11 @@ import streamlit as st
 import pygame
 from PIL import Image
 
-# Initialize pygame with specified audio driver
-pygame.mixer.init(driver='alsa')  # Use 'alsa' as the audio driver (Linux)
+# Set the SDL_AUDIODRIVER environment variable to 'alsa' before importing Pygame
+os.environ['SDL_AUDIODRIVER'] = 'alsa'
+
+# Initialize pygame
+pygame.mixer.init()
 
 def app():
     # Specify the absolute path to the intent.json file
