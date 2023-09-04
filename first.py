@@ -49,31 +49,34 @@ st.image(image)
 
 user_input = st.text_input("Type exit to exit the interaction with the bot.")
 
-webrtc_ctx = webrtc()
+# Define the WebRTC app behavior
+def webrtc_app():
+    if st.button("Start Voice Interaction"):
+        if user_input.lower() == 'exit':
+            st.text("Bot: Goodbye!")
+        else:
+            try:
+                st.text("You (Speak):")
+                webrtc_ctx.audio_only()
+                audio_data = webrtc_ctx.audio_receiver.get_frame()
 
-if st.button("Start Voice Interaction"):
-    if user_input.lower() == 'exit':
-        st.text("Bot: Goodbye!")
-    else:
-        try:
-            st.text("You (Speak):")
-            webrtc_ctx.audio_only()
-            audio_data = webrtc_ctx.audio_receiver.get_frame()
+                with sr.AudioData(audio_data):
+                    user_input = r.recognize_google(audio_data)
+                    st.text(f"You (Voice): {user_input}")
 
-            with sr.AudioData(audio_data):
-                user_input = r.recognize_google(audio_data)
-                st.text(f"You (Voice): {user_input}")
+                    matched_intent = recognize_intent(user_input)
+                    if matched_intent:
+                        response = get_response(matched_intent)
+                        st.text(f"Bot: {response}")
+                        output_audio_file = text_to_audio(response)
+                        webrtc_ctx.audio_file(output_audio_file)
+                    else:
+                        st.text("Bot: I'm sorry, I didn't understand that. Please ask another question.")
 
-                matched_intent = recognize_intent(user_input)
-                if matched_intent:
-                    response = get_response(matched_intent)
-                    st.text(f"Bot: {response}")
-                    output_audio_file = text_to_audio(response)
-                    webrtc_ctx.audio_file(output_audio_file)
-                else:
-                    st.text("Bot: I'm sorry, I didn't understand that. Please ask another question.")
+            except sr.UnknownValueError:
+                st.text("Bot: I couldn't understand your audio. Please try again.")
+            except sr.RequestError as e:
+                st.text(f"Bot: There was an error with the speech recognition service: {e}")
 
-        except sr.UnknownValueError:
-            st.text("Bot: I couldn't understand your audio. Please try again.")
-        except sr.RequestError as e:
-            st.text(f"Bot: There was an error with the speech recognition service: {e}")
+# Start the WebRTC app
+webrtc(webrtc_app)
