@@ -7,6 +7,8 @@ from nltk.corpus import stopwords
 from bs4 import BeautifulSoup
 import streamlit as st
 from PIL import Image
+import nltk
+nltk.download('stopwords')
 
 def app():
         
