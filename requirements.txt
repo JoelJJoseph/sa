@@ -10,4 +10,5 @@ scikit-learn-intelex
 xgboost
 scikit-image
 BeautifulSoup4
+SpeechRecognition
 
